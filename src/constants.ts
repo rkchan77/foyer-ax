@@ -1,0 +1,1 @@
+export const Methods = new Set(["GET", "POST", "PUT", "DELETE", "PATCH"]);
