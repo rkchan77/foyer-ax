@@ -27,3 +27,18 @@ export type LogFormat = "nginx" | "json";
     logText: string;
     labels: { ip: string; kind: "human" | "agent" }[];
   }
+
+  export type SessionLabel = "human" | "likely-agent" | "declared-agent" | "unknown";
+ 
+export interface Classification {
+  label: SessionLabel;
+  confidence: number; // 0..1 — how sure we are of `label`
+  signals: string[];  // human-readable reasons that fired, e.g. "bot-ua", "no-assets"
+}
+ 
+// A session to classify: the records for one visitor (shared ip), time-ordered.
+export interface Session {
+  ip: string;
+  records: RequestRecord[];
+}
+ 
