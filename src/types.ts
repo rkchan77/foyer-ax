@@ -1,7 +1,3 @@
-// ── Given. Do not change these types. ──────────────────────────────
-// A single parsed HTTP request from an access log, normalized across
-// whatever raw log format it came from.
-
 export interface RequestRecord {
   ip: string;           // client IP, e.g. "203.0.113.5"
   timestampMs: number;  // epoch MILLISECONDS, UTC. (offsets must be resolved)
@@ -14,3 +10,20 @@ export interface RequestRecord {
 }
 
 export type LogFormat = "nginx" | "json";
+
+  export interface SessionSpec {
+    kind: "human" | "agent";
+    ip: string;
+    startMs: number; // epoch ms of the session's first request (whole seconds)
+  }
+
+  export interface GeneratedSession {
+    kind: "human" | "agent";
+    ip: string;
+    records: RequestRecord[];
+  }
+
+  export interface GeneratedLog {
+    logText: string;
+    labels: { ip: string; kind: "human" | "agent" }[];
+  }
