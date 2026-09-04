@@ -1,5 +1,0 @@
-{"timestamp":"2026-09-01T13:55:36.000Z","clientIp":"203.0.113.5","method":"GET","path":"/pricing","status":200,"bytes":5324,"referer":"https://example.com/","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"}
-{"timestamp":"2026-09-01T13:55:40.000Z","clientIp":"198.51.100.22","method":"POST","path":"/api/signup","status":422,"bytes":88,"referer":null,"userAgent":"ClaudeBot/1.0 (+https://www.anthropic.com/claudebot)"}
-
-{"garbage":true,"note":"missing required fields, must be skipped"}
-this line is not json at all and must be skipped

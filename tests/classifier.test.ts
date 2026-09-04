@@ -3,7 +3,7 @@ import { classify } from "../src/classifier.js";
 import { generateSession } from "../src/generator.js";
 import type { Session } from "../src/types.js";
 
-describe("part 1 — classify obvious sessions", () => {
+describe("classify — obvious sessions", () => {
   it("labels a declared-agent (bot UA) session", () => {
     const s = generateSession({ kind: "agent", ip: "198.51.100.7", startMs: 1788270936000 });
     const c = classify(s);

@@ -1,7 +1,0 @@
-203.0.113.5 - - [01/Sep/2026:13:55:36 +0000] "GET /pricing HTTP/1.1" 200 5324 "https://example.com/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
-198.51.100.22 - - [01/Sep/2026:06:55:36 -0700] "POST /api/signup HTTP/1.1" 422 88 "-" "ClaudeBot/1.0 (+https://www.anthropic.com/claudebot)"
-203.0.113.5 - - [01/Sep/2026:13:56:01 +0000] "GET /assets/app.js HTTP/1.1" 200 91234 "https://example.com/pricing" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
-192.0.2.44 - - [01/Sep/2026:13:57:10 +0000] "GET /search?q=hello world HTTP/1.1" 200 1200 "-" "GPTBot/1.2 (+https://openai.com/gptbot)"
-203.0.113.5 - - [01/Sep/2026:13:58:00 +0000] "GET /favicon.ico HTTP/1.1" 304 - "https://example.com/pricing" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36"
-
-this is a malformed line that should be skipped

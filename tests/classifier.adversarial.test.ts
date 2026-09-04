@@ -1,8 +1,7 @@
-// ── PART 2 — the anti-mirror tests. Open after Part 1 is green. ─────
-// These sessions are ones your GENERATOR would never produce, so they
-// check your classifier weighs multiple signals instead of keying on a
-// single giveaway. Build a browser-UA record by hand (not via the
-// generator) so you control the adversarial shape.
+// Adversarial (anti-mirror) cases: sessions the generator would never
+// produce, so they check the classifier weighs multiple signals instead of
+// keying on a single giveaway. Records are built by hand (not via the
+// generator) to control the adversarial shape.
 
 import { describe, it, expect } from "vitest";
 import { classify } from "../src/classifier.js";
@@ -15,7 +14,7 @@ function rec(path: string, ms: number, ua: string): RequestRecord {
   return { ip: "203.0.113.5", timestampMs: ms, method: "GET", path, status: 200, bytes: 1000, referer: null, userAgent: ua };
 }
 
-describe("part 2 — adversarial (anti-mirror) cases", () => {
+describe("classify — adversarial (anti-mirror) cases", () => {
   // A real human with JS disabled loads no assets. "no-assets" alone must
   // NOT be enough to call it an agent.
   it("does NOT call a browser-UA, no-assets, human-paced session an agent", () => {

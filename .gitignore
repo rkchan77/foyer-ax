@@ -1,1 +1,14 @@
 node_modules
+
+# build/test output
+dist
+coverage
+
+# editor/OS
+.DS_Store
+.vscode
+.idea
+
+# env
+.env
+.env.local

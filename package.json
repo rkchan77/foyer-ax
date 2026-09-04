@@ -1,15 +1,19 @@
 {
   "name": "agentscope",
   "version": "0.0.1",
-  "description": "Agent-traffic log analyzer — MVP stage 1: log parser",
+  "description": "Agent-traffic analytics for web logs — sessionize, classify human vs. AI agent, and detect agent friction.",
   "type": "module",
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:part1": "vitest run tests/parser.part1.test.ts",
-    "test:part2": "vitest run tests/parser.part2.test.ts"
+    "typecheck": "tsc --noEmit",
+    "analyze": "tsx scripts/analyze.ts",
+    "update-bots": "tsx scripts/update-bots.ts"
   },
+  "license": "MIT",
   "devDependencies": {
+    "@types/node": "^26.4.1",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "vitest": "^2.1.8"
   }
