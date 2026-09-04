@@ -1,7 +1,3 @@
-// ── Given. Do not change these types. ──────────────────────────────
-// A single parsed HTTP request from an access log, normalized across
-// whatever raw log format it came from.
-
 export interface RequestRecord {
   ip: string;           // client IP, e.g. "203.0.113.5"
   timestampMs: number;  // epoch MILLISECONDS, UTC. (offsets must be resolved)
@@ -56,4 +52,37 @@ export interface FrictionFinding {
 export interface FrictionReport {
   findings: FrictionFinding[];
   hadFriction: boolean; // true iff findings.length > 0
+}
+
+export interface FlowStep {
+  method?: string; // optional — omit to match any method
+  path: string;    // exact (query ignored) OR a trailing wildcard: "/product/*"
+}
+export interface Flow {
+  name: string;
+  steps: FlowStep[];
+}
+export interface FlowMatch {
+  flow: string;
+  reached: number;    // how many steps matched, in order (0..steps.length)
+  completed: boolean; // reached === steps.length
+}
+ 
+export type Medium = "agent" | "human";
+export interface MediumSession {
+  medium: Medium;
+  records: RequestRecord[];
+}
+export interface MediumStats {
+  total: number;
+  completed: number;
+  completionRate: number;   // completed / total (0 when total 0)
+  reachedPerStep: number[]; // reachedPerStep[i] = sessions reaching >= step i+1
+}
+export interface FunnelResult {
+  flow: string;
+  steps: number;
+  agent: MediumStats;
+  human: MediumStats;
+  parityGapStep: number | null; // step index where humans out-reach agents most
 }
