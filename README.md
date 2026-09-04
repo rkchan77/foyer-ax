@@ -1,9 +1,9 @@
-# AgentScope
+# foyer
 
-Agent-traffic analytics for web logs — "PostHog for AI agents." AgentScope
-ingests Vercel log exports, groups requests into sessions, classifies each
-session as human vs. AI-agent (with a confidence score and the signals that
-fired), detects agent friction (retry storms, 4xx clusters, auth walls,
+Agent-traffic analytics for web logs — who's at the door, human or agent.
+foyer ingests Vercel log exports, groups requests into sessions, classifies
+each session as human vs. AI-agent (with a confidence score and the signals
+that fired), detects agent friction (retry storms, 4xx clusters, auth walls,
 abandonment), and reports what fraction of your traffic is agents, which
 vendors, and where they got stuck. The lens is agent task-success, not human
 engagement.

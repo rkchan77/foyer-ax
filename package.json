@@ -1,5 +1,5 @@
 {
-  "name": "agentscope",
+  "name": "foyer",
   "version": "0.0.1",
   "description": "Agent-traffic analytics for web logs — sessionize, classify human vs. AI agent, and detect agent friction.",
   "type": "module",

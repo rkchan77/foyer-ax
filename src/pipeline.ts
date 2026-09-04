@@ -73,7 +73,7 @@ function pushCountTable(lines: string[], counts: Record<string, number>): void {
 
 export function formatReport(r: AnalysisReport): string {
   const lines: string[] = [];
-  lines.push("═══ AgentScope report ═══");
+  lines.push("═══ foyer report ═══");
   lines.push(`Requests: ${r.totalRequests}   Sessions: ${r.totalSessions}`);
   lines.push(`Agent sessions: ${r.agentSessionPct.toFixed(1)}%`);
   lines.push("");
