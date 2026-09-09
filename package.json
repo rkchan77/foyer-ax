@@ -1,18 +1,61 @@
 {
-  "name": "foyer",
-  "version": "0.0.1",
-  "description": "Agent-traffic analytics for web logs — sessionize, classify human vs. AI agent, and detect agent friction.",
+  "name": "foyer-ax",
+  "version": "0.1.0",
+  "description": "Agent-experience analytics for Vercel logs — sessionize, classify human vs. AI agent, detect agent friction, and measure agent-vs-human task-success funnels.",
+  "keywords": [
+    "agent analytics",
+    "agent experience",
+    "AX",
+    "AI agents",
+    "observability",
+    "vercel",
+    "llm",
+    "bots"
+  ],
+  "author": "Ryan Chan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkchan77/foyer-ax.git"
+  },
+  "homepage": "https://github.com/rkchan77/foyer-ax#readme",
+  "bugs": {
+    "url": "https://github.com/rkchan77/foyer-ax/issues"
+  },
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "foyer": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
+    "build": "tsup",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "analyze": "tsx scripts/analyze.ts",
-    "update-bots": "tsx scripts/update-bots.ts"
+    "lint": "biome check .",
+    "analyze": "tsx src/cli.ts analyze",
+    "update-bots": "tsx scripts/update-bots.ts",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
-  "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "^2.5.12",
     "@types/node": "^26.4.1",
+    "cac": "^7.0.0",
+    "tsup": "^8.5.1",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3",
     "vitest": "^2.1.8"

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "checkout",
+    "steps": [
+      { "path": "/cart" },
+      { "path": "/checkout" },
+      { "method": "POST", "path": "/api/order" }
+    ]
+  },
+  {
+    "name": "signup",
+    "steps": [
+      { "path": "/signup" },
+      { "method": "POST", "path": "/api/signup" },
+      { "path": "/welcome" }
+    ]
+  },
+  {
+    "name": "search",
+    "steps": [{ "path": "/search" }, { "path": "/product/*" }]
+  }
+]

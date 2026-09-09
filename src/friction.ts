@@ -1,4 +1,9 @@
-import type { RequestRecord, Session, FrictionFinding, FrictionReport } from "./types.js";
+import type {
+  FrictionFinding,
+  FrictionReport,
+  RequestRecord,
+  Session,
+} from "./types.js";
 
 /**
  * Detect agent-friction signals over one session's request trace.
@@ -71,11 +76,14 @@ interface StatusMatch {
 
 // How many records match anywhere in the session, plus the highest-status
 // (most severe) one to use as the representative example in the detail.
-function countMatching(records: RequestRecord[], matches: (status: number) => boolean): StatusMatch {
+function countMatching(
+  records: RequestRecord[],
+  matches: (status: number) => boolean,
+): StatusMatch {
   const hits = records.filter((r) => matches(r.status));
   const worst = hits.reduce<RequestRecord | undefined>(
     (max, r) => (!max || r.status > max.status ? r : max),
-    undefined
+    undefined,
   );
   return { count: hits.length, worst };
 }

@@ -9,6 +9,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "declaration": true,
     "noEmit": true
   },
   "include": ["src", "scripts", "tests"]

@@ -10,7 +10,9 @@ const operators: Record<string, string> = {
   ...CUSTOM_BOTS,
 };
 
-const entries = Object.entries(operators).map(([name, op]) => [name.toLowerCase(), op] as const);
+const entries = Object.entries(operators).map(
+  ([name, op]) => [name.toLowerCase(), op] as const,
+);
 
 export function isBotUserAgent(ua: string): boolean {
   const u = ua.toLowerCase();

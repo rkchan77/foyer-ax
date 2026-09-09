@@ -1,0 +1,578 @@
+[
+  {
+    "timestampInMs": 1788480000000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "requestId": "sample-0"
+  },
+  {
+    "timestampInMs": 1788480000400,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/app.js",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "requestId": "sample-1"
+  },
+  {
+    "timestampInMs": 1788480000550,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/style.css",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "requestId": "sample-2"
+  },
+  {
+    "timestampInMs": 1788480004750,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/12",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "requestId": "sample-3"
+  },
+  {
+    "timestampInMs": 1788480012850,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "requestId": "sample-4"
+  },
+  {
+    "timestampInMs": 1788480019150,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "requestId": "sample-5"
+  },
+  {
+    "timestampInMs": 1788480030550,
+    "requestMethod": "POST",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 201,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "requestId": "sample-6"
+  },
+  {
+    "timestampInMs": 1788480090000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "requestId": "sample-7"
+  },
+  {
+    "timestampInMs": 1788480090400,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/app.js",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "requestId": "sample-8"
+  },
+  {
+    "timestampInMs": 1788480090550,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/style.css",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "requestId": "sample-9"
+  },
+  {
+    "timestampInMs": 1788480094750,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/7",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "requestId": "sample-a"
+  },
+  {
+    "timestampInMs": 1788480102850,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "requestId": "sample-b"
+  },
+  {
+    "timestampInMs": 1788480109150,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "requestId": "sample-c"
+  },
+  {
+    "timestampInMs": 1788480120550,
+    "requestMethod": "POST",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 201,
+    "requestUserAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+    "requestId": "sample-d"
+  },
+  {
+    "timestampInMs": 1788480180000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestId": "sample-e"
+  },
+  {
+    "timestampInMs": 1788480180400,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/app.js",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestId": "sample-f"
+  },
+  {
+    "timestampInMs": 1788480180550,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/style.css",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestId": "sample-g"
+  },
+  {
+    "timestampInMs": 1788480184750,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/31",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestId": "sample-h"
+  },
+  {
+    "timestampInMs": 1788480192850,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestId": "sample-i"
+  },
+  {
+    "timestampInMs": 1788480199150,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestId": "sample-j"
+  },
+  {
+    "timestampInMs": 1788480210550,
+    "requestMethod": "POST",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 201,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "requestId": "sample-k"
+  },
+  {
+    "timestampInMs": 1788480270000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "requestId": "sample-l"
+  },
+  {
+    "timestampInMs": 1788480270400,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/app.js",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "requestId": "sample-m"
+  },
+  {
+    "timestampInMs": 1788480270550,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/style.css",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "requestId": "sample-n"
+  },
+  {
+    "timestampInMs": 1788480274750,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/12",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "requestId": "sample-o"
+  },
+  {
+    "timestampInMs": 1788480282850,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "requestId": "sample-p"
+  },
+  {
+    "timestampInMs": 1788480289150,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "requestId": "sample-q"
+  },
+  {
+    "timestampInMs": 1788480300550,
+    "requestMethod": "POST",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 201,
+    "requestUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+    "requestId": "sample-r"
+  },
+  {
+    "timestampInMs": 1788480360000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "requestId": "sample-s"
+  },
+  {
+    "timestampInMs": 1788480360400,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/app.js",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "requestId": "sample-t"
+  },
+  {
+    "timestampInMs": 1788480360550,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/style.css",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "requestId": "sample-u"
+  },
+  {
+    "timestampInMs": 1788480364750,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/44",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "requestId": "sample-v"
+  },
+  {
+    "timestampInMs": 1788480372850,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "requestId": "sample-w"
+  },
+  {
+    "timestampInMs": 1788480379150,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "requestId": "sample-x"
+  },
+  {
+    "timestampInMs": 1788480390550,
+    "requestMethod": "POST",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 201,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "requestId": "sample-y"
+  },
+  {
+    "timestampInMs": 1788480450000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    "requestId": "sample-z"
+  },
+  {
+    "timestampInMs": 1788480450400,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/app.js",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    "requestId": "sample-10"
+  },
+  {
+    "timestampInMs": 1788480450550,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/assets/style.css",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    "requestId": "sample-11"
+  },
+  {
+    "timestampInMs": 1788480454750,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/7",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    "requestId": "sample-12"
+  },
+  {
+    "timestampInMs": 1788480462850,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    "requestId": "sample-13"
+  },
+  {
+    "timestampInMs": 1788480469150,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
+    "requestId": "sample-14"
+  },
+  {
+    "timestampInMs": 1788480540000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "requestId": "sample-15"
+  },
+  {
+    "timestampInMs": 1788480541000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/12",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "requestId": "sample-16"
+  },
+  {
+    "timestampInMs": 1788480542000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "requestId": "sample-17"
+  },
+  {
+    "timestampInMs": 1788480543000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "requestId": "sample-18"
+  },
+  {
+    "timestampInMs": 1788480544000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 404,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "requestId": "sample-19"
+  },
+  {
+    "timestampInMs": 1788480545000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 404,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "requestId": "sample-1a"
+  },
+  {
+    "timestampInMs": 1788480546000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 404,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot",
+    "requestId": "sample-1b"
+  },
+  {
+    "timestampInMs": 1788480600000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) compatible; ClaudeBot/1.0; +claudebot@anthropic.com",
+    "requestId": "sample-1c"
+  },
+  {
+    "timestampInMs": 1788480601000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/7",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) compatible; ClaudeBot/1.0; +claudebot@anthropic.com",
+    "requestId": "sample-1d"
+  },
+  {
+    "timestampInMs": 1788480602000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) compatible; ClaudeBot/1.0; +claudebot@anthropic.com",
+    "requestId": "sample-1e"
+  },
+  {
+    "timestampInMs": 1788480603000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) compatible; ClaudeBot/1.0; +claudebot@anthropic.com",
+    "requestId": "sample-1f"
+  },
+  {
+    "timestampInMs": 1788480604000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/account",
+    "responseStatusCode": 401,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) compatible; ClaudeBot/1.0; +claudebot@anthropic.com",
+    "requestId": "sample-1g"
+  },
+  {
+    "timestampInMs": 1788480605000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/account",
+    "responseStatusCode": 403,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) compatible; ClaudeBot/1.0; +claudebot@anthropic.com",
+    "requestId": "sample-1h"
+  },
+  {
+    "timestampInMs": 1788480660000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot",
+    "requestId": "sample-1i"
+  },
+  {
+    "timestampInMs": 1788480661000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/17",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot",
+    "requestId": "sample-1j"
+  },
+  {
+    "timestampInMs": 1788480662000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot",
+    "requestId": "sample-1k"
+  },
+  {
+    "timestampInMs": 1788480663000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot",
+    "requestId": "sample-1l"
+  },
+  {
+    "timestampInMs": 1788480720000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot)",
+    "requestId": "sample-1m"
+  },
+  {
+    "timestampInMs": 1788480721000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/3",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot)",
+    "requestId": "sample-1n"
+  },
+  {
+    "timestampInMs": 1788480722000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot)",
+    "requestId": "sample-1o"
+  },
+  {
+    "timestampInMs": 1788480723000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot)",
+    "requestId": "sample-1p"
+  },
+  {
+    "timestampInMs": 1788480724000,
+    "requestMethod": "POST",
+    "requestPath": "www.example-shop.com/api/order",
+    "responseStatusCode": 201,
+    "requestUserAgent": "Mozilla/5.0 (compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot)",
+    "requestId": "sample-1q"
+  },
+  {
+    "timestampInMs": 1788480780000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "CCBot/2.0 (https://commoncrawl.org/faq/)",
+    "requestId": "sample-1r"
+  },
+  {
+    "timestampInMs": 1788480781000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/1",
+    "responseStatusCode": 200,
+    "requestUserAgent": "CCBot/2.0 (https://commoncrawl.org/faq/)",
+    "requestId": "sample-1s"
+  },
+  {
+    "timestampInMs": 1788480782000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/2",
+    "responseStatusCode": 200,
+    "requestUserAgent": "CCBot/2.0 (https://commoncrawl.org/faq/)",
+    "requestId": "sample-1t"
+  },
+  {
+    "timestampInMs": 1788480840000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; Bytespider; +http://bytespider.bytedance.com)",
+    "requestId": "sample-1u"
+  },
+  {
+    "timestampInMs": 1788480841000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/9",
+    "responseStatusCode": 200,
+    "requestUserAgent": "Mozilla/5.0 (Linux; Android 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; Bytespider; +http://bytespider.bytedance.com)",
+    "requestId": "sample-1v"
+  },
+  {
+    "timestampInMs": 1788480900000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/",
+    "responseStatusCode": 200,
+    "requestUserAgent": "internal-fetch/1.0 (+node)",
+    "requestId": "sample-1w"
+  },
+  {
+    "timestampInMs": 1788480901000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/product/21",
+    "responseStatusCode": 200,
+    "requestUserAgent": "internal-fetch/1.0 (+node)",
+    "requestId": "sample-1x"
+  },
+  {
+    "timestampInMs": 1788480902000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/cart",
+    "responseStatusCode": 200,
+    "requestUserAgent": "internal-fetch/1.0 (+node)",
+    "requestId": "sample-1y"
+  },
+  {
+    "timestampInMs": 1788480903000,
+    "requestMethod": "GET",
+    "requestPath": "www.example-shop.com/checkout",
+    "responseStatusCode": 200,
+    "requestUserAgent": "internal-fetch/1.0 (+node)",
+    "requestId": "sample-1z"
+  }
+]

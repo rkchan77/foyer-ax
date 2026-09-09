@@ -3,7 +3,7 @@
 // keying on a single giveaway. Records are built by hand (not via the
 // generator) to control the adversarial shape.
 
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { classify } from "../src/classifier.js";
 import type { RequestRecord, Session } from "../src/types.js";
 
@@ -11,7 +11,16 @@ const CHROME =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36";
 
 function rec(path: string, ms: number, ua: string): RequestRecord {
-  return { ip: "203.0.113.5", timestampMs: ms, method: "GET", path, status: 200, bytes: 1000, referer: null, userAgent: ua };
+  return {
+    ip: "203.0.113.5",
+    timestampMs: ms,
+    method: "GET",
+    path,
+    status: 200,
+    bytes: 1000,
+    referer: null,
+    userAgent: ua,
+  };
 }
 
 describe("classify — adversarial (anti-mirror) cases", () => {
@@ -22,8 +31,8 @@ describe("classify — adversarial (anti-mirror) cases", () => {
       ip: "203.0.113.5",
       records: [
         rec("/", 1788270936000, CHROME),
-        rec("/pricing", 1788270951000, CHROME),   // +15s, human-paced
-        rec("/features", 1788270979000, CHROME),  // +28s
+        rec("/pricing", 1788270951000, CHROME), // +15s, human-paced
+        rec("/features", 1788270979000, CHROME), // +28s
       ],
     };
     const c = classify(s);
@@ -38,8 +47,16 @@ describe("classify — adversarial (anti-mirror) cases", () => {
       ip: "203.0.113.5",
       records: [
         rec("/", 1788270936000, "GPTBot/1.2 (+https://openai.com/gptbot)"),
-        rec("/assets/app.js", 1788270937000, "GPTBot/1.2 (+https://openai.com/gptbot)"),
-        rec("/pricing", 1788270938000, "GPTBot/1.2 (+https://openai.com/gptbot)"),
+        rec(
+          "/assets/app.js",
+          1788270937000,
+          "GPTBot/1.2 (+https://openai.com/gptbot)",
+        ),
+        rec(
+          "/pricing",
+          1788270938000,
+          "GPTBot/1.2 (+https://openai.com/gptbot)",
+        ),
       ],
     };
     expect(classify(s).label).toBe("declared-agent");
@@ -52,9 +69,9 @@ describe("classify — adversarial (anti-mirror) cases", () => {
       ip: "203.0.113.5",
       records: [
         rec("/", 1788270936000, CHROME),
-        rec("/pricing", 1788270937000, CHROME),   // +1s
-        rec("/features", 1788270938000, CHROME),  // +1s
-        rec("/blog", 1788270939000, CHROME),      // +1s  (dead regular)
+        rec("/pricing", 1788270937000, CHROME), // +1s
+        rec("/features", 1788270938000, CHROME), // +1s
+        rec("/blog", 1788270939000, CHROME), // +1s  (dead regular)
       ],
     };
     expect(classify(s).label).not.toBe("human");

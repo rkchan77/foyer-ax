@@ -2,13 +2,18 @@ import type { RequestRecord, Session } from "./types.js";
 
 const DEFAULT_GAP_MS = 30 * 60 * 1000; // 30 min of inactivity starts a new session
 
-export function sessionize(records: RequestRecord[], gapMs = DEFAULT_GAP_MS): Session[] {
+export function sessionize(
+  records: RequestRecord[],
+  gapMs = DEFAULT_GAP_MS,
+): Session[] {
   const sorted = [...records].sort((a, b) => a.timestampMs - b.timestampMs);
 
   const byVisitor = new Map<string, RequestRecord[]>();
   for (const r of sorted) {
     const key = `${r.ip}|${r.userAgent}`;
-    (byVisitor.get(key) ?? byVisitor.set(key, []).get(key)!).push(r);
+    const visits = byVisitor.get(key);
+    if (visits) visits.push(r);
+    else byVisitor.set(key, [r]);
   }
 
   const sessions: Session[] = [];
