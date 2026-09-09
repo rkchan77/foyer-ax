@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/foyer-ax)](https://www.npmjs.com/package/foyer-ax)
 [![CI](https://github.com/rkchan77/foyer-ax/actions/workflows/ci.yml/badge.svg)](https://github.com/rkchan77/foyer-ax/actions/workflows/ci.yml)
-[![license](https://img.shields.io/npm/l/foyer-ax)](./LICENSE)
+[![license](https://img.shields.io/github/license/rkchan77/foyer-ax)](./LICENSE)
 
 **Agent-experience analytics for web logs - PostHog for the agent medium.**
 
