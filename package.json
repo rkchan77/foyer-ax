@@ -31,7 +31,7 @@
   },
   "types": "./dist/index.d.ts",
   "bin": {
-    "foyer": "./dist/cli.js"
+    "foyer": "dist/cli.js"
   },
   "files": [
     "dist",
