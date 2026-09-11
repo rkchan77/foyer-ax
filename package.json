@@ -1,6 +1,6 @@
 {
   "name": "foyer-ax",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Agent-experience analytics for Vercel logs — sessionize, classify human vs. AI agent, detect agent friction, and measure agent-vs-human task-success funnels.",
   "keywords": [
     "agent analytics",
