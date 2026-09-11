@@ -2,13 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
-## [Unreleased]
+## [0.3.0] - 2026-09-11
 
 - HTML report: `renderHtmlReport()` (`src/html.ts`) renders an `AnalysisReport`
   as a self-contained editorial HTML document (composition bar, agent
   vendors, human-vs-agent funnel as SVG, friction) — entirely data-driven, no
   hard-coded numbers. Wired into the CLI via `foyer analyze --html <path>
   [--source <name>]`.
+- CLI error handling: `foyer analyze` now catches file/config errors (bad
+  `--html` path, missing logfile, malformed `--flows` config) and prints a
+  clean one-line message instead of a raw Node stack trace.
 
 ## [0.1.0] - 2026-09-10
 
