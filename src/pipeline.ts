@@ -120,7 +120,7 @@ function formatPct(stats: { total: number; completionRate: number }): string {
     : "n/a";
 }
 
-function stepLabel(flow: Flow, stepIndex: number): string {
+export function stepLabel(flow: Flow, stepIndex: number): string {
   const step = flow.steps[stepIndex];
   return step.method ? `${step.method.toUpperCase()} ${step.path}` : step.path;
 }

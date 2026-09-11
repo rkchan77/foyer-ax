@@ -32,7 +32,7 @@ npm install -g foyer-ax
 ## CLI usage
 
 ```
-foyer analyze <logfile> [--flows <path>]
+foyer analyze <logfile> [--flows <path>] [--html <path>] [--source <name>]
 foyer update-bots
 foyer --help
 foyer --version
@@ -42,6 +42,10 @@ foyer --version
   friction, and (if `--flows` is given) compute a task-success funnel for each
   configured flow.
 - `--flows <path>` - path to a flow-config JSON file (see [Flow config](#flow-config) below).
+- `--html <path>` - write the editorial HTML report (see below) to `<path>`
+  instead of printing the plain-text report to stdout.
+- `--source <name>` - label shown in the HTML report's header (defaults to
+  the log filename).
 - `update-bots` - refresh the vendored AI-bot list from the community
   [ai-robots-txt](https://github.com/ai-robots-txt/ai.robots.txt) project.
 
@@ -49,10 +53,28 @@ foyer --version
 foyer analyze examples/sample-vercel.json --flows examples/foyer.config.json
 ```
 
+### HTML report
+
+`--html` renders the same `AnalysisReport` as a self-contained, printable HTML
+document instead of the plain-text table: composition bar, agent vendors,
+per-flow human-vs-agent funnel (as SVG), and friction, all derived from the
+report data:
+
+```
+foyer analyze examples/sample-vercel.json \
+  --flows examples/foyer.config.json \
+  --html report.html \
+  --source shop.example.com
+```
+
+See [`examples/sample-report.html`](./examples/sample-report.html) for the
+rendered output. As a library, the same renderer is `renderHtmlReport(report,
+meta)` (see [Library usage](#library-usage)).
+
 ## Library usage
 
 ```ts
-import { analyze, formatReport, parseVercelLog } from "foyer-ax";
+import { analyze, formatReport, parseVercelLog, renderHtmlReport } from "foyer-ax";
 import { readFileSync } from "node:fs";
 
 const records = parseVercelLog(readFileSync("vercel-log-export.json", "utf8"));
@@ -63,6 +85,9 @@ const flows = [
 const report = analyze(records, flows);
 console.log(formatReport(report));
 // or use `report` directly - byLabel, vendors, frictionByKind, funnels, ...
+
+// or render the editorial HTML report instead of the plain-text one:
+const html = renderHtmlReport(report, { source: "shop.example.com", adapter: "vercel", version: "0.1.0" });
 ```
 
 ## Flow config
@@ -151,8 +176,9 @@ Vercel log export   →   RequestRecord[]   →   engine                        
   `computeFunnel`, wired together by `analyze()`) only ever sees
   `RequestRecord[]`. It doesn't know or care that the data came from Vercel -
   see "Adding another log source" below.
-- **Presentation** (`formatReport`, the CLI) turns the engine's output into
-  something a person reads.
+- **Presentation** (`formatReport` for plain text, `renderHtmlReport` for the
+  editorial HTML report, the CLI) turns the engine's output into something a
+  person reads.
 
 ### Files
 
@@ -166,21 +192,22 @@ Vercel log export   →   RequestRecord[]   →   engine                        
 | `src/friction.ts` | engine | the four friction detectors |
 | `src/flows.ts` | engine | `matchFlow` (in-order subsequence match) and `computeFunnel` (agent-vs-human completion + parity-gap step) |
 | `src/config.ts` | engine | loads + validates a flow-config JSON document |
-| `src/pipeline.ts` | engine + presentation | `analyze()` composes the engine stages into a report; `formatReport()` renders it |
+| `src/pipeline.ts` | engine + presentation | `analyze()` composes the engine stages into a report; `formatReport()` renders the plain-text report |
+| `src/html.ts` | presentation | `renderHtmlReport()` renders the same report as a self-contained editorial HTML document (composition bar, vendors, funnel SVGs, friction) |
 | `src/index.ts` | public API | the package's stable exports - see below |
-| `src/cli.ts` | presentation | the `foyer` CLI (`analyze`, `update-bots`) |
+| `src/cli.ts` | presentation | the `foyer` CLI (`analyze` - `--flows`, `--html`, `--source` - and `update-bots`) |
 | `src/botsUpdater.ts` | data | refreshes `data/bots.data.json` from the community [ai-robots-txt](https://github.com/ai-robots-txt/ai.robots.txt) list; shared by `update-bots` (dev script) and `foyer update-bots` (CLI) |
 | `data/bots.data.json` | data | vendored bot-list snapshot (see below) |
 
 ### Public API
 
-`foyer-ax` exports: `analyze`, `formatReport`, `parseVercelLog`, `sessionize`,
-`classify`, `detectFriction`, `matchFlow`, `computeFunnel`, `isBotUserAgent`,
-`vendorForUserAgent`, `parseFlowConfig`, `loadFlowConfigFile`, and their
-associated types (`RequestRecord`, `Session`, `Classification`, `Flow`,
-`FunnelResult`, `AnalysisReport`, ...). Anything not re-exported from
-`src/index.ts` is an internal implementation detail and may change without
-notice.
+`foyer-ax` exports: `analyze`, `formatReport`, `renderHtmlReport`,
+`parseVercelLog`, `sessionize`, `classify`, `detectFriction`, `matchFlow`,
+`computeFunnel`, `isBotUserAgent`, `vendorForUserAgent`, `parseFlowConfig`,
+`loadFlowConfigFile`, and their associated types (`RequestRecord`, `Session`,
+`Classification`, `Flow`, `FunnelResult`, `AnalysisReport`, `ReportMeta`,
+...). Anything not re-exported from `src/index.ts` is an internal
+implementation detail and may change without notice.
 
 ### The bot list
 
@@ -233,13 +260,16 @@ and release steps.
 
 ## Fixtures & examples
 
-
 - `examples/sample-vercel.json` - a synthetic log with a mix of human and
   agent sessions moving through a checkout flow, some agents stalling before
   ordering. Used in the "Example output" section above and as an end-to-end
   test fixture.
 - `examples/foyer.config.json` - a starter flow config (checkout, signup,
   search).
+- `examples/sample-report.html` - the HTML report rendered from the two
+  fixtures above (`foyer analyze examples/sample-vercel.json --flows
+  examples/foyer.config.json --html ... --source shop.example.com`). Open it
+  directly in a browser to see the full editorial report.
 
 ## License
 

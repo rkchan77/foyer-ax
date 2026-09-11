@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>foyer — agent experience report (shop.example.com)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F0E8; --paper-inset:#ECE7DB; --ink:#1C1A17; --ink-dim:#57534B;
+    --ink-faint:#928C81; --rule:#DAD3C4; --agent:#2F5249; --human:#B4AC9C; --pewter:#96907D; --unknown:#C7BFAE;
+ --disp:"Space Mono",ui-monospace,monospace; --body:"Newsreader",Georgia,serif; --data:"Space Mono",ui-monospace,monospace;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;padding:0 24px}
+  .data{font-family:var(--data);font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums}
+  .disp{font-family:var(--disp)}
+  .wrap{max-width:940px;margin:0 auto;padding:56px 0 110px}
+
+  .masthead{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:14px;border-bottom:1.5px solid var(--ink)}
+  .wordmark{font-family:var(--disp);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .wordmark i{font-style:normal;color:var(--pewter)}
+  .doctype{text-align:right;font-size:13px;color:var(--ink-faint);line-height:1.5}
+  .doctype b{color:var(--ink-dim);font-weight:400}
+
+  .meta{display:grid;grid-template-columns:repeat(4,1fr);margin-top:16px;gap:26px}
+  .meta .k{font-size:12px;color:var(--ink-faint);margin-bottom:4px}
+  .meta .v{font-size:14px;color:var(--ink-dim)}
+  .meta .v.data{font-family:var(--data)}
+
+  .hero{padding:72px 0 60px}
+  .hero .figure{font-family:var(--data);font-variant-numeric:tabular-nums;font-size:140px;line-height:.86;font-weight:700;color:var(--agent);letter-spacing:-.04em}
+  .hero .figure .pct{font-size:58px;vertical-align:24px;font-weight:400}
+  .hero .verdict{margin-top:28px;max-width:26ch;font-family:var(--disp);font-size:30px;line-height:1.3;color:var(--ink);font-weight:400}
+  .hero .sub{margin-top:18px;font-size:15px;color:var(--ink-dim);max-width:58ch;line-height:1.6}
+
+  .band{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+  .band .cell{padding:22px 22px 22px 0}
+  .band .n{font-family:var(--data);font-size:30px;font-weight:500;color:var(--ink)}
+  .band .n.agent{color:var(--agent)}
+  .band .l{margin-top:8px;font-size:13px;color:var(--ink-faint)}
+
+  section{padding:46px 0;border-bottom:1px solid var(--rule)}
+  .label{font-family:var(--disp);font-size:15px;font-weight:500;color:var(--pewter);margin-bottom:28px}
+
+  .compbar{display:flex;height:7px;width:100%;margin-bottom:18px;gap:2px}
+  .compbar span{display:block;height:100%}
+  .s-human{background:var(--human)} .s-declared{background:var(--agent)} .s-likely{background:var(--pewter)} .s-unknown{background:var(--unknown)}
+  .legend{display:flex;gap:30px;flex-wrap:wrap}
+  .legend .item{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink-dim)}
+  .legend .sw{width:9px;height:9px;flex:none}
+  .legend .c{font-family:var(--data);color:var(--ink);margin-left:4px}
+
+  .vrow{display:grid;grid-template-columns:150px 46px 1fr;align-items:center;gap:18px;padding:12px 0;border-top:1px solid var(--rule)}
+  .vrow:first-child{border-top:0}
+  .vrow .vn{color:var(--ink);font-size:15px}
+  .vrow .vc{font-family:var(--data);color:var(--ink-dim);font-size:13px;text-align:right}
+  .vrow .vbar{height:2px;background:var(--agent)}
+
+  .funnel-wrap{width:100%;overflow:visible}
+  .funnel-svg{width:100%;height:auto;display:block}
+  .funnel-svg .guide{stroke:var(--rule);stroke-width:1}
+  .funnel-svg .fpoly.human{fill:var(--human)}
+  .funnel-svg .fpoly.agent{fill:var(--agent)}
+  .funnel-svg .ftitle{font-family:var(--disp);font-size:14px;font-weight:500;fill:var(--ink-dim)}
+  .funnel-svg .stepname{font-family:var(--data);font-size:13px;fill:var(--ink)}
+  .funnel-svg .fpct{font-family:var(--data);font-size:13px}
+  .funnel-svg .humant{fill:var(--ink)}
+  .funnel-svg .agentt{fill:var(--paper)}
+  .funnel-svg .flast{font-size:18px;font-weight:700}
+  .callout{margin-top:30px;padding-left:22px;border-left:2px solid var(--agent);font-size:16px;color:var(--ink-dim);line-height:1.6;max-width:66ch}
+  .callout b{color:var(--agent);font-weight:500;font-family:var(--data)}
+
+  .frow{display:grid;grid-template-columns:140px 1fr auto;gap:20px;align-items:baseline;padding:15px 0;border-top:1px solid var(--rule)}
+  .frow:first-child{border-top:0}
+  .frow .fk{font-family:var(--disp);font-size:13px;color:var(--pewter)}
+  .frow .fd{color:var(--ink-dim);font-size:15px}
+  .frow .fd .data{font-family:var(--data);color:var(--ink)}
+  .frow .fm{font-family:var(--data);font-size:13px;color:var(--ink-faint);text-align:right}
+
+  .foot{display:flex;justify-content:space-between;padding-top:30px;font-size:13px;color:var(--ink-faint)}
+  .foot .data{font-family:var(--data)}
+
+  @media (max-width:720px){.meta,.band{grid-template-columns:repeat(2,1fr);gap:18px}.hero .figure{font-size:92px}.vrow{grid-template-columns:110px 40px 1fr}}
+  @media (prefers-reduced-motion:no-preference){.fpoly{animation:fade .9s ease both}@keyframes fade{from{opacity:0}to{opacity:1}}}
+</style></head>
+<body><div class="wrap">
+  <header class="masthead">
+    <div class="wordmark">foyer<i>.</i></div>
+    <div class="doctype">Agent Experience Report<br><b>Editorial · v0.1.0</b></div>
+  </header>
+  <div class="meta">
+    <div><div class="k">Source</div><div class="v">shop.example.com</div></div>
+    <div><div class="k">Adapter</div><div class="v">vercel</div></div>
+    <div><div class="k">Window</div><div class="v data">15m</div></div>
+    <div><div class="k">Generated</div><div class="v data">2026-09-11</div></div>
+  </div>
+  <div class="hero">
+    <div class="figure">53.8<span class="pct">%</span></div>
+    <div class="verdict">of sessions were AI agents — traffic your product analytics never recorded.</div>
+    <div class="sub">Agents don't run client-side JavaScript, so pixel-based analytics miss them entirely. foyer reads them at the edge and measures whether they complete what they came to do.</div>
+  </div>
+  <div class="band">
+    <div class="cell"><div class="n data">72</div><div class="l">Requests</div></div>
+    <div class="cell"><div class="n data">13</div><div class="l">Sessions</div></div>
+    <div class="cell"><div class="n data agent">7</div><div class="l">Agent sessions</div></div>
+    <div class="cell"><div class="n data">7</div><div class="l">Vendors seen</div></div>
+  </div>
+  <section>
+    <div class="label">Composition</div>
+    <div class="compbar"><span class="s-human" style="width:46.2%"></span><span class="s-declared" style="width:46.2%"></span><span class="s-likely" style="width:7.7%"></span></div>
+    <div class="legend"><div class="item"><span class="sw s-human"></span>Human<span class="c data">6</span></div><div class="item"><span class="sw s-declared"></span>Declared agent<span class="c data">6</span></div><div class="item"><span class="sw s-likely"></span>Likely agent<span class="c data">1</span></div></div>
+  </section>
+  <section>
+    <div class="label">Agent vendors</div>
+    <div class="vrow"><div class="vn">OpenAI</div><div class="vc data">1</div><div class="vbar" style="width:100%"></div></div>
+    <div class="vrow"><div class="vn">Anthropic</div><div class="vc data">1</div><div class="vbar" style="width:100%"></div></div>
+    <div class="vrow"><div class="vn">Perplexity</div><div class="vc data">1</div><div class="vbar" style="width:100%"></div></div>
+    <div class="vrow"><div class="vn">Amazon</div><div class="vc data">1</div><div class="vbar" style="width:100%"></div></div>
+    <div class="vrow"><div class="vn">Common Crawl Foundation</div><div class="vc data">1</div><div class="vbar" style="width:100%"></div></div>
+    <div class="vrow"><div class="vn">ByteDance</div><div class="vc data">1</div><div class="vbar" style="width:100%"></div></div>
+    <div class="vrow"><div class="vn">Other/Unknown</div><div class="vc data">1</div><div class="vbar" style="width:100%"></div></div>
+  </section>
+  <section>
+    <div class="label">checkout</div>
+    <div class="funnel-wrap"><svg viewBox="0 0 750 258" class="funnel-svg" role="img" aria-label="checkout funnel: human versus agent completion by step">
+    <line x1="6" y1="40" x2="294" y2="40" class="guide"/><line x1="456" y1="40" x2="744" y2="40" class="guide"/>
+    <line x1="6" y1="132" x2="294" y2="132" class="guide"/><line x1="456" y1="132" x2="744" y2="132" class="guide"/>
+    <line x1="6" y1="224" x2="294" y2="224" class="guide"/><line x1="456" y1="224" x2="744" y2="224" class="guide"/>
+    <text x="150" y="20" class="ftitle" text-anchor="middle">Human</text>
+    <text x="600" y="20" class="ftitle" text-anchor="middle">Agent</text>
+    <polygon points="20.0,40 20.0,132 41.7,224 258.3,224 280.0,132 280.0,40" class="fpoly human"/>
+    <polygon points="507.1,40 507.1,132 581.4,224 618.6,224 692.9,132 692.9,40" class="fpoly agent"/>
+    <text x="375" y="44" class="stepname" text-anchor="middle">/cart</text>
+    <text x="375" y="136" class="stepname" text-anchor="middle">/checkout</text>
+    <text x="375" y="228" class="stepname" text-anchor="middle">POST /api/order</text>
+    <text x="150" y="57" class="fpct humant" text-anchor="middle">100%</text>
+    <text x="150" y="149" class="fpct humant" text-anchor="middle">100%</text>
+    <text x="150" y="214" class="fpct flast humant" text-anchor="middle">83%</text>
+    <text x="600" y="57" class="fpct agentt" text-anchor="middle">71%</text>
+    <text x="600" y="149" class="fpct agentt" text-anchor="middle">71%</text>
+    <text x="626.6" y="214" class="fpct flast humant" text-anchor="start">14%</text>
+  </svg></div>
+    <div class="callout">Agents complete checkout at <b>14%</b> versus <b>83%</b> for humans, falling behind at <b>POST /api/order</b> — 3× GET /api/order.</div>
+  </section>
+  <section>
+    <div class="label">signup</div>
+    <div class="funnel-wrap"><svg viewBox="0 0 750 258" class="funnel-svg" role="img" aria-label="signup funnel: human versus agent completion by step">
+    <line x1="6" y1="40" x2="294" y2="40" class="guide"/><line x1="456" y1="40" x2="744" y2="40" class="guide"/>
+    <line x1="6" y1="132" x2="294" y2="132" class="guide"/><line x1="456" y1="132" x2="744" y2="132" class="guide"/>
+    <line x1="6" y1="224" x2="294" y2="224" class="guide"/><line x1="456" y1="224" x2="744" y2="224" class="guide"/>
+    <text x="150" y="20" class="ftitle" text-anchor="middle">Human</text>
+    <text x="600" y="20" class="ftitle" text-anchor="middle">Agent</text>
+    <polygon points="150.0,40 150.0,132 150.0,224 150.0,224 150.0,132 150.0,40" class="fpoly human"/>
+    <polygon points="600.0,40 600.0,132 600.0,224 600.0,224 600.0,132 600.0,40" class="fpoly agent"/>
+    <text x="375" y="44" class="stepname" text-anchor="middle">/signup</text>
+    <text x="375" y="136" class="stepname" text-anchor="middle">POST /api/signup</text>
+    <text x="375" y="228" class="stepname" text-anchor="middle">/welcome</text>
+    <text x="158.0" y="57" class="fpct humant" text-anchor="start">0%</text>
+    <text x="158.0" y="149" class="fpct humant" text-anchor="start">0%</text>
+    <text x="158.0" y="214" class="fpct flast humant" text-anchor="start">0%</text>
+    <text x="608.0" y="57" class="fpct humant" text-anchor="start">0%</text>
+    <text x="608.0" y="149" class="fpct humant" text-anchor="start">0%</text>
+    <text x="608.0" y="214" class="fpct flast humant" text-anchor="start">0%</text>
+  </svg></div>
+    <div class="callout">Agents complete signup at <b>0%</b> versus <b>0%</b> for humans.</div>
+  </section>
+  <section>
+    <div class="label">search</div>
+    <div class="funnel-wrap"><svg viewBox="0 0 750 166" class="funnel-svg" role="img" aria-label="search funnel: human versus agent completion by step">
+    <line x1="6" y1="40" x2="294" y2="40" class="guide"/><line x1="456" y1="40" x2="744" y2="40" class="guide"/>
+    <line x1="6" y1="132" x2="294" y2="132" class="guide"/><line x1="456" y1="132" x2="744" y2="132" class="guide"/>
+    <text x="150" y="20" class="ftitle" text-anchor="middle">Human</text>
+    <text x="600" y="20" class="ftitle" text-anchor="middle">Agent</text>
+    <polygon points="150.0,40 150.0,132 150.0,132 150.0,40" class="fpoly human"/>
+    <polygon points="600.0,40 600.0,132 600.0,132 600.0,40" class="fpoly agent"/>
+    <text x="375" y="44" class="stepname" text-anchor="middle">/search</text>
+    <text x="375" y="136" class="stepname" text-anchor="middle">/product/*</text>
+    <text x="158.0" y="57" class="fpct humant" text-anchor="start">0%</text>
+    <text x="158.0" y="122" class="fpct flast humant" text-anchor="start">0%</text>
+    <text x="608.0" y="57" class="fpct humant" text-anchor="start">0%</text>
+    <text x="608.0" y="122" class="fpct flast humant" text-anchor="start">0%</text>
+  </svg></div>
+    <div class="callout">Agents complete search at <b>0%</b> versus <b>0%</b> for humans.</div>
+  </section>
+  <section>
+    <div class="label">Friction</div>
+    <div class="frow"><div class="fk">Retry storm</div><div class="fd"><span class="data">3× GET /api/order</span></div><div class="fm data">×1</div></div>
+    <div class="frow"><div class="fk">4xx cluster</div><div class="fd"><span class="data">3× 4xx, worst was 404 GET /api/order</span></div><div class="fm data">×1</div></div>
+    <div class="frow"><div class="fk">Abandonment</div><div class="fd"><span class="data">session ended on 404 GET /api/order</span></div><div class="fm data">×1</div></div>
+    <div class="frow"><div class="fk">Auth wall</div><div class="fd"><span class="data">2× auth failure (403 GET /account)</span></div><div class="fm data">×1</div></div>
+    <div class="frow"><div class="fk">Abandonment</div><div class="fd"><span class="data">session ended on 403 GET /account</span></div><div class="fm data">×1</div></div>
+  </section>
+  <div class="foot"><div>Generated by <span class="data">foyer-ax 0.1.0</span></div><div>Agent-experience analytics</div></div>
+</div></body></html>

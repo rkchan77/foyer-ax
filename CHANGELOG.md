@@ -2,7 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
-## [0.1.0] - Unreleased
+## [Unreleased]
+
+- HTML report: `renderHtmlReport()` (`src/html.ts`) renders an `AnalysisReport`
+  as a self-contained editorial HTML document (composition bar, agent
+  vendors, human-vs-agent funnel as SVG, friction) — entirely data-driven, no
+  hard-coded numbers. Wired into the CLI via `foyer analyze --html <path>
+  [--source <name>]`.
+
+## [0.1.0] - 2026-09-10
 
 Initial public release.
 

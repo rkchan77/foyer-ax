@@ -6,6 +6,8 @@ export { classify } from "./classifier.js";
 export { loadFlowConfigFile, parseFlowConfig } from "./config.js";
 export { computeFunnel, matchFlow } from "./flows.js";
 export { detectFriction } from "./friction.js";
+export type { ReportMeta } from "./html.js";
+export { renderHtmlReport } from "./html.js";
 export type {
   AnalysisReport,
   FlowFunnel,
