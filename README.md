@@ -17,6 +17,8 @@ task-success funnels** for the flows you care about - checkout, signup,
 search, whatever a "task" means for your product. The lens is agent task
 *success*, not human engagement.
 
+<img width="1017" height="604" alt="image" src="https://github.com/user-attachments/assets/483d3762-b5bc-4fb3-84b7-8dcdd4fd9ff7" />
+
 ## Install
 
 ```
