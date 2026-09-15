@@ -2,6 +2,24 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.4.0] - 2026-09-14
+
+- **Breaking:** restructured `src/` by runtime environment first, subsystem
+  second, and split the package into two entry points so the pure core stays
+  edge-safe. `"foyer-ax"` (`src/index.ts`) now only re-exports modules with no
+  `node:*` imports (safe on the Vercel Edge runtime); a new `"foyer-ax/node"`
+  entry point (`src/node.ts`) carries everything that touches the filesystem
+  or `node:http`.
+  - `loadFlowConfigFile` moved from `"foyer-ax"` to `"foyer-ax/node"`.
+  - `createJsonlSink`, `foyerMiddleware`, and `ensureSessionId` are now
+    available from `"foyer-ax/node"`.
+  - `config.ts` and `sink.ts` were each split along this same line: the pure
+    parsing/interface pieces (`parseFlowConfig`; `Sink`, `MemorySink`,
+    `multiSink`) stayed on `"foyer-ax"`, while the disk-touching pieces
+    (`loadFlowConfigFile`; `createJsonlSink`) moved to `"foyer-ax/node"`.
+  - No behavior changes - this is a file-organization and export-surface
+    change only.
+
 ## [0.3.0] - 2026-09-11
 
 - HTML report: `renderHtmlReport()` (`src/html.ts`) renders an `AnalysisReport`

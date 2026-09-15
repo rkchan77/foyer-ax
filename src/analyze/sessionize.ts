@@ -1,4 +1,4 @@
-import type { RequestRecord, Session } from "./types.js";
+import type { RequestRecord, Session } from "../types.js";
 
 const DEFAULT_GAP_MS = 30 * 60 * 1000; // 30 min of inactivity starts a new session
 

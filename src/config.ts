@@ -1,4 +1,3 @@
-import { readFileSync } from "node:fs";
 import type { Flow, FlowStep } from "./types.js";
 
 function isFlowStep(v: unknown): v is FlowStep {
@@ -22,10 +21,8 @@ function isFlow(v: unknown): v is Flow {
   return flow.steps.every(isFlowStep);
 }
 
-/**
- * Parse + validate a foyer flow-config document (an array of `Flow`).
- * Throws with a message naming the offending flow/step on malformed input.
- */
+//  Parse + validate a foyer flow-config document (an array of `Flow`).
+//  Throws with a message naming the offending flow/step on malformed input.
 export function parseFlowConfig(jsonText: string): Flow[] {
   let data: unknown;
   try {
@@ -52,9 +49,4 @@ export function parseFlowConfig(jsonText: string): Flow[] {
   });
 
   return data as Flow[];
-}
-
-/** Read + parse a flow-config file (e.g. `foyer.config.json`) from disk. */
-export function loadFlowConfigFile(path: string): Flow[] {
-  return parseFlowConfig(readFileSync(path, "utf8"));
 }

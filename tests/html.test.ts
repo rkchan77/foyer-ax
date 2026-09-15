@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { renderHtmlReport } from "../src/html.js";
-import { analyze } from "../src/pipeline.js";
+import { renderHtmlReport } from "../src/analyze/html.js";
+import { analyze } from "../src/analyze/pipeline.js";
 import type { Flow, RequestRecord } from "../src/types.js";
 
 let t = 1788270936000;

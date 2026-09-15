@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { matchFlow } from "../src/flows.js";
+import { matchFlow } from "../src/analyze/flows.js";
 import type { Flow, RequestRecord } from "../src/types.js";
 
 let t = 1788270936000;

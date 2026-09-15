@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { analyze, formatReport } from "../src/pipeline.js";
+import { analyze, formatReport } from "../src/analyze/pipeline.js";
 import type { Flow, RequestRecord } from "../src/types.js";
 
 let t = 1788270936000;

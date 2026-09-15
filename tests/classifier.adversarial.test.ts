@@ -4,7 +4,7 @@
 // generator) to control the adversarial shape.
 
 import { describe, expect, it } from "vitest";
-import { classify } from "../src/classifier.js";
+import { classify } from "../src/capture/classifier.js";
 import type { RequestRecord, Session } from "../src/types.js";
 
 const CHROME =

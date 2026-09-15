@@ -3,12 +3,12 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { basename } from "node:path";
 import { cac } from "cac";
 import pkg from "../package.json" with { type: "json" };
+import { renderHtmlReport } from "./analyze/html.js";
+import { analyze, formatReport } from "./analyze/pipeline.js";
+import { parseVercelLog } from "./analyze/vercel.js";
 import { updateBots } from "./botsUpdater.js";
-import { loadFlowConfigFile } from "./config.js";
-import { renderHtmlReport } from "./html.js";
-import { analyze, formatReport } from "./pipeline.js";
+import { loadFlowConfigFile } from "./node/config.js";
 import type { RequestRecord } from "./types.js";
-import { parseVercelLog } from "./vercel.js";
 
 // Rough analysis window from the record timestamps, e.g. "24h" / "3d".
 function deriveWindow(records: RequestRecord[]): string {

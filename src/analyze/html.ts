@@ -1,6 +1,6 @@
+import type { Flow, MediumStats, SessionLabel } from "../types.js";
 import type { AnalysisReport, FlowFunnel } from "./pipeline.js";
 import { stepLabel } from "./pipeline.js";
-import type { Flow, MediumStats, SessionLabel } from "./types.js";
 
 export interface ReportMeta {
   /** Where the traffic came from, e.g. "shop.example.com". */

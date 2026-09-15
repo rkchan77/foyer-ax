@@ -1,4 +1,4 @@
-import type { RequestRecord } from "./types.js";
+import type { RequestRecord } from "../types.js";
 
 // Vercel's log export is a JSON array of entries with its own field names.
 // Notably: it carries NO client IP, timestamps are epoch ms (timestampInMs),

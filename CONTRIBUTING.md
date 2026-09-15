@@ -22,17 +22,22 @@ CI (`.github/workflows/ci.yml`) runs typecheck, test, and build on Node 20.
 Keep the adapter → engine → presentation separation described in the
 [README](./README.md#architecture) intact:
 
-- Ingestion (`src/vercel.ts`) is the only place that knows about Vercel's log
-  format. A new log source gets its own adapter that outputs `RequestRecord[]`
-  - nothing downstream should need to change.
+- Ingestion (`src/analyze/vercel.ts`) is the only place that knows about
+  Vercel's log format. A new log source gets its own adapter that outputs
+  `RequestRecord[]` - nothing downstream should need to change.
 - The engine (`sessionize`, `classify`, `detectFriction`, `computeFunnel`)
   only ever sees `RequestRecord[]` / `Session[]`. Classifier weights, friction
   thresholds, and funnel math are intentionally tuned values - changing them
   is a product decision, not a refactor, so open an issue first if you think
   one needs to move.
-- `src/index.ts` is the public API surface. Anything not re-exported there is
-  an internal implementation detail; feel free to change it without a major
-  version bump.
+- `src/` is organized by runtime environment first, subsystem second:
+  everything outside `src/node/` (and `src/cli.ts`) is pure/isomorphic and
+  must stay free of `node:*` imports, so it keeps running on the Vercel Edge
+  runtime.
+- `src/index.ts` (the `"."` entry point) and `src/node.ts` (the `"./node"`
+  entry point) are the public API surface. Anything not re-exported from one
+  of them is an internal implementation detail; feel free to change it
+  without a major version bump.
 
 ## Updating the bot list
 

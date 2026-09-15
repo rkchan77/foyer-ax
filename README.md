@@ -165,10 +165,10 @@ site.
 
 ```
 Vercel log export   →   RequestRecord[]   →   engine                                    →   presentation
-(src/vercel.ts)                               sessionize → classify → friction → funnel      report / CLI
+(src/analyze/vercel.ts)                       sessionize → classify → friction → funnel      report / CLI
 ```
 
-- **Ingestion** (`src/vercel.ts`) turns a Vercel log export into the shared
+- **Ingestion** (`src/analyze/vercel.ts`) turns a Vercel log export into the shared
   `RequestRecord[]` shape. Format-specific quirks (field names, timestamp
   encoding, the host embedded in the request path) are resolved here and
   nowhere else.
@@ -182,32 +182,55 @@ Vercel log export   →   RequestRecord[]   →   engine                        
 
 ### Files
 
+The source tree is organized by **runtime environment first, subsystem
+second**: everything under `src/` outside of `src/node/` is pure/isomorphic
+(no `node:*` imports, no browser globals) and safe to run on the Vercel Edge
+runtime; `src/node/` (plus `src/cli.ts`) is where file/network I/O and
+`node:http` adapters live.
+
 | File | Layer | Responsibility |
 | --- | --- | --- |
 | `src/types.ts` | shared | `RequestRecord`, `Session`, `Classification`, `FrictionReport`, `Flow`, `FunnelResult`, etc. |
-| `src/vercel.ts` | ingestion | Vercel's log export (no client IP; host embedded in the request path) |
-| `src/sessionize.ts` | engine | groups records into sessions by `ip\|userAgent`, 30-min inactivity gap (degrades to UA-only when IP is absent, e.g. Vercel) |
-| `src/classifier.ts` | engine | weighted-signal human/agent classifier (bot-UA short-circuits to `declared-agent`; no single other signal is enough on its own) |
+| `src/analyze/vercel.ts` | ingestion | Vercel's log export (no client IP; host embedded in the request path) |
+| `src/analyze/sessionize.ts` | engine | groups records into sessions by `ip\|userAgent`, 30-min inactivity gap (degrades to UA-only when IP is absent, e.g. Vercel) |
+| `src/capture/classifier.ts` | engine | weighted-signal human/agent classifiers: `classify` (Vercel-log grade) and `classifySignals` (fuses the SDK's identity/header/client layers) |
 | `src/bots.ts` | engine | known-bot lookup (`isBotUserAgent`, `vendorForUserAgent`), backed by `data/bots.data.json` |
-| `src/friction.ts` | engine | the four friction detectors |
-| `src/flows.ts` | engine | `matchFlow` (in-order subsequence match) and `computeFunnel` (agent-vs-human completion + parity-gap step) |
-| `src/config.ts` | engine | loads + validates a flow-config JSON document |
-| `src/pipeline.ts` | engine + presentation | `analyze()` composes the engine stages into a report; `formatReport()` renders the plain-text report |
-| `src/html.ts` | presentation | `renderHtmlReport()` renders the same report as a self-contained editorial HTML document (composition bar, vendors, funnel SVGs, friction) |
-| `src/index.ts` | public API | the package's stable exports - see below |
+| `src/analyze/friction.ts` | engine | the four friction detectors |
+| `src/analyze/flows.ts` | engine | `matchFlow` (in-order subsequence match) and `computeFunnel` (agent-vs-human completion + parity-gap step) |
+| `src/config.ts` | engine | parses + validates a flow-config JSON document (`parseFlowConfig`) |
+| `src/analyze/pipeline.ts` | engine + presentation | `analyze()` composes the engine stages into a report; `formatReport()` renders the plain-text report |
+| `src/analyze/html.ts` | presentation | `renderHtmlReport()` renders the same report as a self-contained editorial HTML document (composition bar, vendors, funnel SVGs, friction) |
+| `src/capture/capture.ts`, `src/capture/beacon.ts`, `src/events.ts`, `src/sink.ts` | SDK | pure request/beacon capture pipeline (server- and client-side evidence gathering) for the `classifySignals` path |
+| `src/index.ts` | public API | the pure/edge-safe `"."` entry point - see below |
+| `src/node.ts` | public API | the Node-only `"./node"` entry point - see below |
 | `src/cli.ts` | presentation | the `foyer` CLI (`analyze` - `--flows`, `--html`, `--source` - and `update-bots`) |
+| `src/node/adapters.ts` | node | connect/express/`node:http` capture middleware (`foyerMiddleware`, `ensureSessionId`) |
+| `src/node/sink.ts` | node | `createJsonlSink` - appends captured events to a JSONL file |
+| `src/node/config.ts` | node | `loadFlowConfigFile` - reads + parses a flow-config file from disk |
 | `src/botsUpdater.ts` | data | refreshes `data/bots.data.json` from the community [ai-robots-txt](https://github.com/ai-robots-txt/ai.robots.txt) list; shared by `update-bots` (dev script) and `foyer update-bots` (CLI) |
 | `data/bots.data.json` | data | vendored bot-list snapshot (see below) |
 
 ### Public API
 
-`foyer-ax` exports: `analyze`, `formatReport`, `renderHtmlReport`,
-`parseVercelLog`, `sessionize`, `classify`, `detectFriction`, `matchFlow`,
-`computeFunnel`, `isBotUserAgent`, `vendorForUserAgent`, `parseFlowConfig`,
-`loadFlowConfigFile`, and their associated types (`RequestRecord`, `Session`,
-`Classification`, `Flow`, `FunnelResult`, `AnalysisReport`, `ReportMeta`,
-...). Anything not re-exported from `src/index.ts` is an internal
+`foyer-ax` ships two entry points, split by runtime:
+
+- **`"foyer-ax"`** (`src/index.ts`) - the pure/edge-safe core: `analyze`,
+  `formatReport`, `renderHtmlReport`, `parseVercelLog`, `sessionize`,
+  `classify`, `detectFriction`, `matchFlow`, `computeFunnel`,
+  `isBotUserAgent`, `vendorForUserAgent`, `parseFlowConfig`, and their
+  associated types (`RequestRecord`, `Session`, `Classification`, `Flow`,
+  `FunnelResult`, `AnalysisReport`, `ReportMeta`, ...).
+- **`"foyer-ax/node"`** (`src/node.ts`) - Node-only functionality that touches
+  the filesystem or `node:http`: `loadFlowConfigFile`, `createJsonlSink`,
+  `foyerMiddleware`, `ensureSessionId`.
+
+Anything not re-exported from one of these two entry points is an internal
 implementation detail and may change without notice.
+
+> **Breaking change (0.4.0):** `loadFlowConfigFile` moved off `"foyer-ax"` onto
+> `"foyer-ax/node"` (it reads from disk, so it can't run on the Edge runtime).
+> Update `import { loadFlowConfigFile } from "foyer-ax"` to
+> `import { loadFlowConfigFile } from "foyer-ax/node"`.
 
 ### The bot list
 
@@ -232,10 +255,10 @@ The engine only depends on `RequestRecord[]`, so plugging in a new source
 (e.g. Cloudflare) means:
 
 1. Write a function that turns the raw export into `RequestRecord[]` (see
-   `src/vercel.ts` for a minimal example). Every field on `RequestRecord`
-   must be populated - use `"unknown"`, `0`, or `null` for whatever the
-   source doesn't carry, matching how `vercel.ts` handles a missing client
-   IP.
+   `src/analyze/vercel.ts` for a minimal example). Every field on
+   `RequestRecord` must be populated - use `"unknown"`, `0`, or `null` for
+   whatever the source doesn't carry, matching how `vercel.ts` handles a
+   missing client IP.
 2. Wire it into `src/cli.ts` (or add a format flag, once there's more than
    one source worth branching on).
 3. Nothing downstream (`sessionize`, `classify`, `detectFriction`,

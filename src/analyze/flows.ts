@@ -6,7 +6,7 @@ import type {
   MediumSession,
   MediumStats,
   RequestRecord,
-} from "./types.js";
+} from "../types.js";
 
 function matchPath(recordPath: string, pattern: string): boolean {
   if (pattern.endsWith("/*")) {

@@ -3,7 +3,7 @@ import type {
   FrictionReport,
   RequestRecord,
   Session,
-} from "./types.js";
+} from "../types.js";
 
 /**
  * Detect agent-friction signals over one session's request trace.

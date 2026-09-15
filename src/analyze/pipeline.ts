@@ -1,8 +1,5 @@
-import { vendorForUserAgent } from "./bots.js";
-import { classify } from "./classifier.js";
-import { computeFunnel } from "./flows.js";
-import { detectFriction } from "./friction.js";
-import { sessionize } from "./sessionize.js";
+import { vendorForUserAgent } from "../bots.js";
+import { classify } from "../capture/classifier.js";
 import type {
   Classification,
   Flow,
@@ -13,7 +10,10 @@ import type {
   RequestRecord,
   Session,
   SessionLabel,
-} from "./types.js";
+} from "../types.js";
+import { computeFunnel } from "./flows.js";
+import { detectFriction } from "./friction.js";
+import { sessionize } from "./sessionize.js";
 
 export interface SessionAnalysis {
   session: Session;

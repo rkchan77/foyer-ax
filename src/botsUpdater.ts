@@ -12,13 +12,11 @@ function cleanOperator(raw: unknown): string {
   return (m ? m[1] : raw).trim();
 }
 
-/**
- * Refreshes the vendored AI-bot list from the community-maintained
- * ai-robots-txt project, writing `data/bots.data.json` next to wherever this
- * module is running from (the repo root in dev, the installed package root
- * once built). Shared by `scripts/update-bots.ts` (dev) and the `foyer
- * update-bots` CLI command.
- */
+//  Refreshes the vendored AI-bot list from the community-maintained
+//  ai-robots-txt project, writing `data/bots.data.json` next to wherever this
+//  module is running from (the repo root in dev, the installed package root
+//  once built). Shared by `scripts/update-bots.ts` (dev) and the `foyer
+//  update-bots` CLI command.
 export async function updateBots(): Promise<{ count: number; path: string }> {
   const res = await fetch(SOURCE);
   if (!res.ok) throw new Error(`fetch failed: ${res.status}`);

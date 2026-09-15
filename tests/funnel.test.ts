@@ -2,7 +2,7 @@
 // The business layer: aggregate matchFlow across sessions, split by medium,
 // to get agent-vs-human completion and the step where agents fall behind.
 import { describe, expect, it } from "vitest";
-import { computeFunnel } from "../src/flows.js";
+import { computeFunnel } from "../src/analyze/flows.js";
 import type { Flow, MediumSession, RequestRecord } from "../src/types.js";
 
 let t = 1788270936000;

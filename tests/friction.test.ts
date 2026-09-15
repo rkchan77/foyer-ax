@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { detectFriction } from "../src/friction.js";
+import { detectFriction } from "../src/analyze/friction.js";
 import type { RequestRecord, Session } from "../src/types.js";
 
 let t = 1788270936000;
