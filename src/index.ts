@@ -36,3 +36,15 @@ export type {
   Session,
   SessionLabel,
 } from "./types.js";
+
+// SDK: real-time capture (pure / edge-safe)
+export { beaconScript, parseBeacon } from "./capture/beacon.js";
+export type { CapturedRequest, Headers } from "./capture/capture.js";
+export { captureRequest, normalizeHeaders } from "./capture/capture.js";
+export { classifySignals } from "./capture/classifier.js";
+export type {
+  AgentEvent, ClientSignal, SecFetch, SessionSignals, SignalLayer,
+} from "./events.js";
+export { mergeSessionSignals, toRequestRecord } from "./events.js";
+export type { Sink } from "./sink.js";
+export { MemorySink, multiSink } from "./sink.js";
